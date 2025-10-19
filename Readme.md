@@ -80,3 +80,16 @@ each of the parameter we saw previously is very useful, I suggest to remember th
 - Increase Solver Iterations only when objects jitter, slider or penetrate each other
 
 
+## Some Informations:
+### What is a Joints? 
+Joints link 2 object with rigidbody and control the relative movement. there are multiple joint types:
+- FixedJoint: link two rigidbodies and keep the locked together
+- HingeJoint: Rotates around one axis, usefull for door, wheel
+- SpringJoint: Connects bodies with spring-like elasticity, used for ropes
+- ConfigurableJoint: Flexible: allows full motion limit customization
+
+### Ragdolls
+Ragdoll is a group of body parts(each with a dedicate rigidbody for colliders) connected via Joints(Like ConfigurableJoints), these are used to simulate:
+- Realistic death
+- Dynamic motion
+
