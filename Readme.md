@@ -57,3 +57,26 @@ The disadvantages are:
 Both of detection are good, but they must be used correctly. I suggest to mix both modes.
 Discrete Detection is efficient for most gameplay objects.
 Continuous Detection should be used for fast motion to avoid tunneling.
+
+## PhysX Logics
+In this section we'll see how PhysX works, PhysX is based on NVIDIA PhysX, uses optimization and staibility features to make simulation accurate and efficient, we'll see the following key parameters:
+- Sleeping
+- Interpolation
+- Solver Iteration Count
+
+### Sleeping
+Sleeping is a parameter of physX and literally stop a Rigidbody when it remains still foa a period of time. As you can see in the PhysXSleeping, we have a sphere that when is still, its rigidbody is sleeping(stop to being simulated), I Suggest to press the space button to make the sphere jump, and press multiple time to see that object is not sleeping, why this? Because saves CPU resources, and keep physics simulation stable(no micro Jitter), but be careful, a sleeping object can not react immediatly to a very small forces. As we used in the dedicated script, you can wake up the rigidbody with WakeUp() function.
+
+### Interpolation
+The interpolation works to make the movement more smooths, in the dedicate scene, we can see a little difference between two sphere, one with the interpolation active, and one without the interpolation, as you can see the movement is more smooth.
+
+### Solver Iteration Count
+The Solver Iteration Count resolve contacts, joints, and contraints between objects, it must be verified with a lot of object, make the game more stable stacking, and joint accuracy better. But use more the CPU.
+
+### Conclusions
+each of the parameter we saw previously is very useful, I suggest to remember the following things:
+- Use sleeping for static or idle objects
+- user Interpolation for all visible moving rigidbodies, to make they more realistic
+- Increase Solver Iterations only when objects jitter, slider or penetrate each other
+
+
